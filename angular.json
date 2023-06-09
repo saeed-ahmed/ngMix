@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-mix",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -36,6 +36,10 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.production.ts"
+              }],
               "budgets": [
                 {
                   "type": "initial",
@@ -48,9 +52,15 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "buildOptimizer": true,
+              "optimization": true
             },
             "development": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.development.ts"
+              }],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -65,13 +75,15 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ngMix:build:production"
+              "browserTarget": "ngMix:build:production",
+              "port": 5200
             },
             "development": {
-              "browserTarget": "ngMix:build:development"
+              "browserTarget": "ngMix:build:development",
+              "port": 5200
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "production"
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
