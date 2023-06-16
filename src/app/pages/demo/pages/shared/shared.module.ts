@@ -6,6 +6,7 @@ import { SharedComponent } from './shared.component';
 import { ButtonsModule } from '@app/shared/buttons';
 import { ControlsModule } from '@app/shared/controls';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormFieldModule } from '@app/shared/controls/form-field/form-field.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedRoutingModule,
     ReactiveFormsModule,
     ButtonsModule,
-    ControlsModule
+    ControlsModule,
+    FormFieldModule
   ]
 })
 export class SharedModule { }
